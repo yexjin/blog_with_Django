@@ -1,0 +1,10 @@
+<h1>Update write your project</h1>
+
+<form action="{%url 'update' project.id%}" method="post">
+    {% csrf_token %}
+    <p>제목 : <input type="text" name="title" value="{{project.title}}"></p>
+    <p>프로젝트 이름 : <input type="text" name="project_name" value="{{project.project_name}}"></p>
+    내용 : <textarea name="body" id="" cols="30" rows="10" >{{project.body}}</textarea>
+    <button type="submit">submit</button>
+
+</form>

@@ -1,0 +1,8 @@
+<h1>WRITE your projecting</h1>
+
+<form action="{%url 'create_projecting'%}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{project_form.as_p}}
+    <button type="submit">submit</button>
+
+</form>
