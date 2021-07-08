@@ -21,5 +21,9 @@ urlpatterns = [
     path('create_projecting/', views.create_projecting, name="create_projecting"),
     path('new_projecting/',views.new_projecting, name="new_projecting"),
     path('delete_projecting/<str:id>', views.delete_projecting, name="delete_projecting"),
-    
+
+    path('study/', views.study, name="study"),
+    path('add_study/', views.add_study, name="add_study"),
+    path('create_study/', views.create_study, name="create_study"),
+    path('study_detail/',views.study_detail, name="study_detail"),
 ]

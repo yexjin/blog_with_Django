@@ -1,25 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail</title>
-    <style>
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
         body{text-align: center;}
     </style>
-</head>
-<body>
     <h1>{{project.title}}</h1>
     <div>
     {{project.project_name}}
     {{project.pub_date}}
 </div>
 <hr>
+{% if project.img %}
+    <p><img src="{{project.img.url}}" alt="" width="400" height="400"></p>
+    {% endif %}
    <p> {{project.body}}</p>
+   
 
    <a href="{%url 'project' %}">확인</a>
    <a href="{%url 'edit' project.id%}">수정하기</a>
    <a href="{%url 'delete' project.id%}">삭제하기</a>
-</body>
-</html>
+
+{% endblock %}

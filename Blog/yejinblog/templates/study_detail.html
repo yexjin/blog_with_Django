@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <style>
+        body{text-align: center;}
+    </style>
+
+    <h1>{{study.study_title}}</h1>
+    {{study.study_link}}
+    <a href="{%url 'study' %}">확인</a>
+   {% comment %} <a href="{%url 'edit_study' project.id%}">수정하기</a> {% endcomment %}
+   <a href="{%url 'delete' study.id%}">삭제하기</a>
+
+{% endblock %}

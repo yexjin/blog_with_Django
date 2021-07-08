@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404,redirect
 from .models import Project
 from django.utils import timezone
 from .models import Project_ing
+from .models import Study
 from .forms import ProjectingForm
 
 def main(request):
@@ -59,6 +60,7 @@ def create(request):
     new_project.title = request.POST['title']
     new_project.project_name= request.POST['project_name']
     new_project.body = request.POST['body']
+    new_project.img = request.FILES['image']
     new_project.pub_date = timezone.now()     # 현재 시각을 나타내줌.
     new_project.save() # 이거 해주깅!
 
@@ -75,6 +77,7 @@ def update(request, id):
     update_project.title = request.POST['title']
     update_project.project_name = request.POST['project_name']
     update_project.body = request.POST['body']
+    update_project.img = request.FILES['image']
     update_project.pub_date = timezone.now()    
     update_project.save() 
     return redirect('detail', update_project.id)
@@ -107,3 +110,22 @@ def delete_projecting(request, id):
     delete_projecting = Project_ing.objects.get(id=id)
     delete_projecting.delete()
     return redirect('project')
+
+#### Study
+def study(request):
+    studies = Study.objects.all()
+    return render(request, 'study.html', {'studies':studies})
+
+def study_detail(request, id):
+    study = get_object_or_404(Study,pk = id)
+    return render(request, 'study_detail.html', {'study':study})
+
+def add_study(request):
+    return render(request, 'add_study.html')
+
+def create_study(request):
+    new_study = Study()
+    new_study.study_title = request.POST['study_title']
+    new_study.study_link = request.POST['study_link']
+    new_study.save()
+    return redirect('study_detail', new_study.id)
