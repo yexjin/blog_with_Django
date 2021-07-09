@@ -25,8 +25,8 @@ class Project_ing(models.Model):
         return self.title_ing #글의 제목으로 설정
 
 class Study(models.Model):
-    study_title = models.CharField(max_length=200, blank=True, null = True)
-    study_link = models.URLField("Site URL")
+    study_title = models.CharField(max_length=200)
+    study_link = models.URLField(blank=True, null = True)
 
     def __str__(self): # 객체를 출력 할 때 나타나는 값
-        return self.study_title + self.study_link
+        return self.study_title

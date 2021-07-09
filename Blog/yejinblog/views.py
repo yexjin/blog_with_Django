@@ -8,12 +8,13 @@ from .forms import ProjectingForm
 def main(request):
     projects = Project.objects.all()
     projects_ing = Project_ing.objects.all()
+    studies = Study.objects.all()
     if request.method == "POST": 
         text = request.POST.get('text_input') # post method를 사용해서 text_input을 가져오자(Get)
         word_list = text.split(' ')
         word_num = len(word_list)
         return render(request,"main.html", {"word_num":word_num}, {"text":text})
-    return render(request,"main.html", {'projects':projects, 'projects_ing':projects_ing})
+    return render(request,"main.html", {'projects':projects, 'projects_ing':projects_ing, 'studies':studies})
 
 def login(request):
     if request.method == "POST":
@@ -115,17 +116,3 @@ def delete_projecting(request, id):
 def study(request):
     studies = Study.objects.all()
     return render(request, 'study.html', {'studies':studies})
-
-def study_detail(request, id):
-    study = get_object_or_404(Study,pk = id)
-    return render(request, 'study_detail.html', {'study':study})
-
-def add_study(request):
-    return render(request, 'add_study.html')
-
-def create_study(request):
-    new_study = Study()
-    new_study.study_title = request.POST['study_title']
-    new_study.study_link = request.POST['study_link']
-    new_study.save()
-    return redirect('study_detail', new_study.id)

@@ -13,12 +13,9 @@
               
               <ul class="list-group list-group-flush">
               {% for study in studies %}
-                <li class="list-group-item"><a href="#"">{{study.study_title}}</li>
+                <li class="list-group-item"><a href="{{study.study_link}}">{{study.study_title}}</li>
                 {% endfor %}
               </ul>
-              <div>
-                        <a href="{%url 'add_study'%}"> + add study button</a>
-                    </div>
               <br /><br />
           </div>
 
