@@ -8,16 +8,12 @@
     <div>
     {{project.project_name}}
     {{project.pub_date}}
+    {{project.project_link}}
 </div>
 <hr>
 {% if project.img %}
     <p><img src="{{project.img.url}}" alt="" width="400" height="400"></p>
     {% endif %}
    <p> {{project.body}}</p>
-   
-
-   <a href="{%url 'project' %}">확인</a>
-   <a href="{%url 'edit' project.id%}">수정하기</a>
-   <a href="{%url 'delete' project.id%}">삭제하기</a>
 
 {% endblock %}
